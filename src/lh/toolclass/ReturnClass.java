@@ -18,23 +18,27 @@ public class ReturnClass<T> {
     }
 
     public ReturnClass failure() {
-        setResultCode(ResultCode.ERROR);
-        return this;
+        return failure(null);
     }
 
     public ReturnClass failure(String message) {
-        setMessage(message);
-        return failure();
-    }
-
-    public ReturnClass success(T data, String message) {
-        setMessage(message);
-        return success(data);
+        setResultCode(ResultCode.ERROR);
+        if (message != null) {
+            setMessage(message);
+        }
+        return this;
     }
 
     public ReturnClass success(T data) {
+        return success(data,null);
+    }
+
+    public ReturnClass success(T data, String message) {
         setData(data);
         setResultCode(ResultCode.SUCCESS);
+        if (message != null) {
+            setMessage(message);
+        }
         return this;
     }
 
