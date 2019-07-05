@@ -1,5 +1,6 @@
 package lh.toolclass;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.CRC32;
@@ -23,6 +24,9 @@ public class LHCRC32 {
         return crc32.getValue();
     }
 
+//    InputStrem is = new ByteArrayInputStream(str.getBytes());
+//    或者
+//    ByteArrayInputStream stream= new ByteArrayInputStream(str.getBytes());
     public long encrypt(InputStream data) throws IOException {
         final byte[] buffer = new byte[STREAM_BUFFER_LENGTH];
         int read = data.read(buffer, 0, STREAM_BUFFER_LENGTH);
