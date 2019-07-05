@@ -9,6 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author 梁昊
+ * @date 2019/7/5
+ * @function list常规操作类
+ * @editLog
+ */
 public class ListClass {
     /**
      * 根据主键值，在关联表中，关联出与主对象的属性名、属性类型相同，且主对象属性值为null的属性
