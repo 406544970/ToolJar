@@ -4,7 +4,14 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 public class LhClass {
-
+    public LhClass() {
+        super();
+        this.version = "1.0";
+    }
+    private String version;
+    public String getVersion(){
+        return String.format("version :%s",this.version);
+    }
     /**
      * 指定属性列表，在类中，是否全部存在
      *
