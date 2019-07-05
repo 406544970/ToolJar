@@ -4,13 +4,42 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 public class LhClass {
-    public LhClass() {
-        super();
-        this.version = "1.0";
+    /**
+     * 根据属性值，得到get方法名
+     *
+     * @param key 属性值
+     * @return get方法名
+     */
+    public static String getCamelGetMethodName(String key) {
+        return getCamelMethodName(key, true);
     }
-    private String version;
-    public String getVersion(){
-        return String.format("version :%s",this.version);
+
+    /**
+     * 根据属性值，得到set方法名
+     *
+     * @param key 属性值
+     * @return set方法名
+     */
+    public static String getCamelSetMethodName(String key) {
+        return getCamelMethodName(key, false);
+    }
+
+    /**
+     * 得到驼峰命名法的方法名
+     * 如：输入useId，返回:getUseId或setUseId
+     *
+     * @param key     属性名
+     * @param getSign true:get方法；false:set方法
+     * @return 驼峰命名法的方法名，若key为null，返回为：null
+     */
+    private static String getCamelMethodName(String key, boolean getSign) {
+        if (key == null || key.trim().isEmpty())
+            return null;
+        key = key.substring(0, 1).toUpperCase() + key.substring(1);
+        return getSign ? String.format("get%s", key) : String.format("set%s", key);
+    }
+    public static String getVersion(){
+        return String.format("version :%s","1.0");
     }
     /**
      * 指定属性列表，在类中，是否全部存在
