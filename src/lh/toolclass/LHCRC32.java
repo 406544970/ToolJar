@@ -1,6 +1,5 @@
 package lh.toolclass;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.CRC32;
