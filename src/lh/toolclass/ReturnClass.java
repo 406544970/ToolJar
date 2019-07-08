@@ -8,9 +8,10 @@ import lh.myenum.ResultCode;
  * @param <T>
  */
 public class ReturnClass<T> {
-    private ResultCode resultCode;
+    private int code;
     private String message;
     private T data;
+    private transient ResultCode resultCode;
 
     public ReturnClass() {
         super();
@@ -42,12 +43,9 @@ public class ReturnClass<T> {
         return this;
     }
 
-    public ResultCode getResultCode() {
-        return resultCode;
-    }
-
     public void setResultCode(ResultCode resultCode) {
         this.resultCode = resultCode;
+        this.code = this.resultCode.getCode();
         setMessage(this.resultCode.getMessage());
     }
 
@@ -65,5 +63,9 @@ public class ReturnClass<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public int getCode() {
+        return code;
     }
 }
