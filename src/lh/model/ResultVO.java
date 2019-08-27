@@ -1,5 +1,7 @@
 package lh.model;
 
+import java.util.List;
+
 /**
  * @ClassName: ResultVO
  * @Description:
@@ -16,8 +18,12 @@ public class ResultVO<T> {
     /**
      * 消息提示.
      */
-    private String message;
+    private String msg;
 
+    /**
+     * 数据条数
+     */
+    private long count;
     /**
      * 数据.
      */
@@ -31,12 +37,12 @@ public class ResultVO<T> {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public T getData() {
@@ -44,6 +50,24 @@ public class ResultVO<T> {
     }
 
     public void setData(T data) {
+        if (data != null) {
+            switch (data.getClass().getName()) {
+                case "java.util.ArrayList":
+                    this.count = ((List) data).size();
+                    break;
+                default:
+                    this.count = 0;
+                    break;
+            }
+        }
         this.data = data;
+    }
+
+    public long getCount() {
+        return count;
+    }
+
+    public void setCount(long count) {
+        this.count = count;
     }
 }

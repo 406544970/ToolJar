@@ -25,40 +25,40 @@ public class ResultStruct {
             case "lh.model.ResultVO":
                 resultStruct = (S) new ResultVO<T>();
                 ((ResultVO) resultStruct).setCode(ResultCode.SUCCESS.getCode());
-                ((ResultVO) resultStruct).setMessage(ResultCode.SUCCESS.getMessage());
+                ((ResultVO) resultStruct).setMsg(ResultCode.SUCCESS.getMessage());
                 ((ResultVO) resultStruct).setData(data);
                 break;
             case "lh.model.ResultVOPage":
                 resultStruct = (S) new ResultVOPage<T>();
                 ((ResultVOPage) resultStruct).setCode(ResultCode.SUCCESS.getCode());
-                ((ResultVOPage) resultStruct).setMessage(ResultCode.SUCCESS.getMessage());
+                ((ResultVOPage) resultStruct).setMsg(ResultCode.SUCCESS.getMessage());
                 ((ResultVOPage) resultStruct).setData(data);
                 ((ResultVOPage) resultStruct).setPage(page);
                 ((ResultVOPage) resultStruct).setLimit(limit);
-                ((ResultVOPage) resultStruct).setTotalCount(totalCount);
+                ((ResultVOPage) resultStruct).setCount(totalCount);
                 break;
             case "lh.model.ResultVOPageTotal":
                 resultStruct = (S) new ResultVOPageTotal<T, V>();
                 ((ResultVOPageTotal) resultStruct).setCode(ResultCode.SUCCESS.getCode());
-                ((ResultVOPageTotal) resultStruct).setMessage(ResultCode.SUCCESS.getMessage());
+                ((ResultVOPageTotal) resultStruct).setMsg(ResultCode.SUCCESS.getMessage());
                 ((ResultVOPageTotal) resultStruct).setData(data);
                 ((ResultVOPageTotal) resultStruct).setPage(page);
                 ((ResultVOPageTotal) resultStruct).setLimit(limit);
-                ((ResultVOPageTotal) resultStruct).setTotalCount(totalCount);
+                ((ResultVOPageTotal) resultStruct).setCount(totalCount);
                 ((ResultVOPageTotal) resultStruct).setTotalData(linkedHashMap);
 
                 break;
             case "lh.model.ResultVOTotal":
                 resultStruct = (S) new ResultVOTotal<T, V>();
                 ((ResultVOTotal) resultStruct).setCode(ResultCode.SUCCESS.getCode());
-                ((ResultVOTotal) resultStruct).setMessage(ResultCode.SUCCESS.getMessage());
+                ((ResultVOTotal) resultStruct).setMsg(ResultCode.SUCCESS.getMessage());
                 ((ResultVOTotal) resultStruct).setData(data);
                 ((ResultVOTotal) resultStruct).setTotalData(linkedHashMap);
                 break;
             default:
                 resultStruct = (S) new ResultVO<T>();
                 ((ResultVO) resultStruct).setCode(ResultCode.SUCCESS.getCode());
-                ((ResultVO) resultStruct).setMessage(ResultCode.SUCCESS.getMessage());
+                ((ResultVO) resultStruct).setMsg(ResultCode.SUCCESS.getMessage());
                 ((ResultVO) resultStruct).setData(data);
                 break;
         }
@@ -150,35 +150,35 @@ public class ResultStruct {
                 resultStruct = (S) new ResultVO();
                 ((ResultVO) resultStruct).setCode(ResultCode.ERROR.getCode());
                 if (message != null) {
-                    ((ResultVO) resultStruct).setMessage(message);
+                    ((ResultVO) resultStruct).setMsg(message);
                 }
                 break;
             case "ResultVOPage":
                 resultStruct = (S) new ResultVOPage();
                 ((ResultVOPage) resultStruct).setCode(ResultCode.ERROR.getCode());
                 if (message != null) {
-                    ((ResultVOPage) resultStruct).setMessage(message);
+                    ((ResultVOPage) resultStruct).setMsg(message);
                 }
                 break;
             case "ResultVOPageTotal":
                 resultStruct = (S) new ResultVOPageTotal();
                 ((ResultVOPageTotal) resultStruct).setCode(ResultCode.ERROR.getCode());
                 if (message != null) {
-                    ((ResultVOPageTotal) resultStruct).setMessage(message);
+                    ((ResultVOPageTotal) resultStruct).setMsg(message);
                 }
                 break;
             case "ResultVOTotal":
                 resultStruct = (S) new ResultVOTotal();
                 ((ResultVOTotal) resultStruct).setCode(ResultCode.ERROR.getCode());
                 if (message != null) {
-                    ((ResultVOTotal) resultStruct).setMessage(message);
+                    ((ResultVOTotal) resultStruct).setMsg(message);
                 }
                 break;
             default:
                 resultStruct = (S) new ResultVO();
                 ((ResultVO) resultStruct).setCode(ResultCode.ERROR.getCode());
                 if (message != null) {
-                    ((ResultVO) resultStruct).setMessage(message);
+                    ((ResultVO) resultStruct).setMsg(message);
                 }
                 break;
         }

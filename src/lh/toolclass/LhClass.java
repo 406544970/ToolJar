@@ -9,7 +9,17 @@ import java.util.List;
 
 public class LhClass {
     /**
-     * 得到订单主表主键主键，长
+     * 得到文件上传主键，长
+     *
+     * @param port 端口号
+     * @return
+     */
+    public static String getPicturyKey(short port) {
+        return getMainKeyLen(MainKeySign.PICTURE.getSignName(), port);
+    }
+
+    /**
+     * 得到订单主表主键，长
      *
      * @param port 端口号
      * @return
@@ -19,7 +29,7 @@ public class LhClass {
     }
 
     /**
-     * 得到订单主表主键主键，短
+     * 得到订单主表主键，短
      *
      * @param port 端口号
      * @return

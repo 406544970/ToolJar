@@ -20,16 +20,6 @@ public final class ResultVOPageTotal<T, V> extends ResultVOPage<T> {
     }
 
     @Override
-    public long getTotalCount() {
-        return super.getTotalCount();
-    }
-
-    @Override
-    public void setTotalCount(long totalCount) {
-        super.setTotalCount(totalCount);
-    }
-
-    @Override
     public int getPage() {
         return super.getPage();
     }
@@ -60,13 +50,13 @@ public final class ResultVOPageTotal<T, V> extends ResultVOPage<T> {
     }
 
     @Override
-    public String getMessage() {
-        return super.getMessage();
+    public String getMsg() {
+        return super.getMsg();
     }
 
     @Override
-    public void setMessage(String message) {
-        super.setMessage(message);
+    public void setMsg(String msg) {
+        super.setMsg(msg);
     }
 
     @Override
@@ -77,5 +67,15 @@ public final class ResultVOPageTotal<T, V> extends ResultVOPage<T> {
     @Override
     public void setData(T data) {
         super.setData(data);
+    }
+
+    @Override
+    public long getCount() {
+        return super.getCount();
+    }
+
+    @Override
+    public void setCount(long count) {
+        super.setCount(count);
     }
 }

@@ -2,6 +2,7 @@ package lh.myenum;
 
 /**
  * 主键枚举
+ *
  * @author 梁昊
  * @date:2019/8/27
  */
@@ -12,10 +13,12 @@ public enum MainKeySign {
     COMPANYUSER("AD"),//企业用户
     DRIVERUSER("AE"),//司机用户
     SUPPLIERUSER("AF"),//供应商用户
+    PICTURE("AG"),//文件上传主键
     ORDERMAIN("OR"),//订单主表主键
     POWER("PO");//全权限
 
     private String signName;
+
     MainKeySign(String signName) {
         this.signName = signName;
     }

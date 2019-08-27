@@ -10,10 +10,6 @@ package lh.model;
  */
 public class ResultVOPage<T> extends ResultVO<T> {
     /**
-     * 数据数量
-     */
-    private long totalCount;
-    /**
      * 当前页数
      */
     private int page;
@@ -21,14 +17,6 @@ public class ResultVOPage<T> extends ResultVO<T> {
      * 每页条数
      */
     private int limit;
-
-    public long getTotalCount() {
-        return totalCount;
-    }
-
-    public void setTotalCount(long totalCount) {
-        this.totalCount = totalCount;
-    }
 
     public int getPage() {
         return page;
@@ -57,13 +45,13 @@ public class ResultVOPage<T> extends ResultVO<T> {
     }
 
     @Override
-    public String getMessage() {
-        return super.getMessage();
+    public String getMsg() {
+        return super.getMsg();
     }
 
     @Override
-    public void setMessage(String message) {
-        super.setMessage(message);
+    public void setMsg(String msg) {
+        super.setMsg(msg);
     }
 
     @Override
@@ -74,5 +62,15 @@ public class ResultVOPage<T> extends ResultVO<T> {
     @Override
     public void setData(T data) {
         super.setData(data);
+    }
+
+    @Override
+    public long getCount() {
+        return super.getCount();
+    }
+
+    @Override
+    public void setCount(long count) {
+        super.setCount(count);
     }
 }

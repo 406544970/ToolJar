@@ -30,13 +30,13 @@ public final class ResultVOTotal<T, V> extends ResultVO<T> {
     }
 
     @Override
-    public String getMessage() {
-        return super.getMessage();
+    public String getMsg() {
+        return super.getMsg();
     }
 
     @Override
-    public void setMessage(String message) {
-        super.setMessage(message);
+    public void setMsg(String msg) {
+        super.setMsg(msg);
     }
 
     @Override
@@ -47,5 +47,15 @@ public final class ResultVOTotal<T, V> extends ResultVO<T> {
     @Override
     public void setData(T data) {
         super.setData(data);
+    }
+
+    @Override
+    public long getCount() {
+        return super.getCount();
+    }
+
+    @Override
+    public void setCount(long count) {
+        super.setCount(count);
     }
 }
