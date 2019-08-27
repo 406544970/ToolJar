@@ -1,4 +1,4 @@
-
+import lh.toolclass.LhClass;
 
 public class Main {
 

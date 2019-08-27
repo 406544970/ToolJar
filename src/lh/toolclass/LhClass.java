@@ -1,11 +1,37 @@
 package lh.toolclass;
 
+import lh.myenum.MainKeySign;
+
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 public class LhClass {
+    /**
+     * 得到全权限主键
+     * @param port 端口号
+     * @return
+     */
+    public static String getPowerKey(short port){
+        return getMainKeyLen(MainKeySign.POWER.getSignName(), port);
+    }
+    /**
+     * 得到主数据，树状主键
+     * @param port 端口号
+     * @return
+     */
+    public static String getMainDataTreeKey(short port){
+        return getMainKeyLen(MainKeySign.DICTORYTREE.getSignName(), port);
+    }
+    /**
+     * 得到主数据，线性主键
+     * @param port 端口号
+     * @return
+     */
+    public static String getMainDataLineKey(short port){
+        return getMainKeyLen(MainKeySign.DICTORYLINE.getSignName(), port);
+    }
     /**
      * 得到长型主键
      * 规则：标识(2个字符) + 年月日时分秒 + 时间戳 + 端口号
@@ -14,7 +40,7 @@ public class LhClass {
      * @param port     端口号
      * @return 例如：CC2019082710251215668727122052344
      */
-    public static String getMainKeyLen(String signName, short port) {
+    private static String getMainKeyLen(String signName, short port) {
         return getIdMainKeyPrivate(signName, (byte) 2, port, true);
     }
 
@@ -26,7 +52,7 @@ public class LhClass {
      * @param port     端口号
      * @return 例如：CC2019082712222344
      */
-    public static String getMainKeyShort(String signName, short port) {
+    private static String getMainKeyShort(String signName, short port) {
         return getIdMainKeyPrivate(signName, (byte) 1, port, false);
     }
 
