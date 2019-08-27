@@ -10,28 +10,34 @@ import java.util.List;
 public class LhClass {
     /**
      * 得到全权限主键
+     *
      * @param port 端口号
      * @return
      */
-    public static String getPowerKey(short port){
+    public static String getPowerKey(short port) {
         return getMainKeyLen(MainKeySign.POWER.getSignName(), port);
     }
+
     /**
      * 得到主数据，树状主键
+     *
      * @param port 端口号
      * @return
      */
-    public static String getMainDataTreeKey(short port){
+    public static String getMainDataTreeKey(short port) {
         return getMainKeyLen(MainKeySign.DICTORYTREE.getSignName(), port);
     }
+
     /**
      * 得到主数据，线性主键
+     *
      * @param port 端口号
      * @return
      */
-    public static String getMainDataLineKey(short port){
+    public static String getMainDataLineKey(short port) {
         return getMainKeyLen(MainKeySign.DICTORYLINE.getSignName(), port);
     }
+
     /**
      * 得到长型主键
      * 规则：标识(2个字符) + 年月日时分秒 + 时间戳 + 端口号
