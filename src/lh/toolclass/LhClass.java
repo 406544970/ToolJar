@@ -1,9 +1,55 @@
 package lh.toolclass;
 
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class LhClass {
+    /**
+     * 得到长型主键
+     * 规则：标识 + 年月日时分秒 + 时间戳 + 端口号
+     *
+     * @param signName 主键标识
+     * @param port     端口号
+     * @return 例如：CC2019082710251215668727122052344
+     */
+    public static String getMainKeyLen(String signName, short port) {
+        return getIdMainKeyPrivate(signName, (byte) 2, port, true);
+    }
+
+    /**
+     * 得到短型主键
+     * 规则：标识 + 年月日 + 时间戳的后4位 + 端口号
+     *
+     * @param signName 主键标识
+     * @param port     端口号
+     * @return 例如：CC2019082712222344
+     */
+    public static String getMainKeyShort(String signName, short port) {
+        return getIdMainKeyPrivate(signName, (byte) 1, port, false);
+    }
+
+    private static String getIdMainKeyPrivate(String signName, byte signLen, short port, boolean lenType) {
+        if (signName == null) {
+            return null;
+        }
+        if (signName != null && signName.length() != signLen) {
+            return null;
+        }
+        String myDate;
+        String myTime = Long.valueOf(System.currentTimeMillis()).toString();
+        SimpleDateFormat df;//设置日期格式
+        if (lenType) {
+            df = new SimpleDateFormat("yyyyMMddHHmmss");
+        } else {
+            df = new SimpleDateFormat("yyyyMMdd");
+            myTime = myTime.substring(myTime.length() - 1 - 4, myTime.length() - 1);
+        }
+        myDate = df.format(new Date());
+        return String.format("%s%s%s%d", signName, myDate, myTime, port);
+    }
+
     /**
      * 根据属性值，得到get方法名
      *
@@ -38,9 +84,11 @@ public class LhClass {
         key = key.substring(0, 1).toUpperCase() + key.substring(1);
         return getSign ? String.format("get%s", key) : String.format("set%s", key);
     }
-    public static String getVersion(){
-        return String.format("version :%s","1.0");
+
+    public static String getVersion() {
+        return String.format("version :%s", "1.0");
     }
+
     /**
      * 指定属性列表，在类中，是否全部存在
      *
