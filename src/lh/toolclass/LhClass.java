@@ -139,6 +139,9 @@ public class LhClass {
             myTime = myTime.substring(myTime.length() - 1 - 4, myTime.length() - 1);
         }
         myDate = df.format(new Date());
+        if (!lenType) {
+            myDate = myDate.substring(2);
+        }
         return String.format("%s%s%s%d", signName, myDate, myTime, port);
     }
 
