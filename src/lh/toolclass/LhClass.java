@@ -9,6 +9,66 @@ import java.util.List;
 
 public class LhClass {
     /**
+     * 得到订单主表主键主键，长
+     *
+     * @param port 端口号
+     * @return
+     */
+    public static String getOrderMainLenKey(short port) {
+        return getMainKeyLen(MainKeySign.ORDERMAIN.getSignName(), port);
+    }
+
+    /**
+     * 得到订单主表主键主键，短
+     *
+     * @param port 端口号
+     * @return
+     */
+    public static String getOrderMainShortKey(short port) {
+        return getMainKeyShort(MainKeySign.ORDERMAIN.getSignName().substring(0, 1), port);
+    }
+
+    /**
+     * 得到管理端用户主键
+     *
+     * @param port 端口号
+     * @return
+     */
+    public static String getManagerUseKey(short port) {
+        return getMainKeyLen(MainKeySign.MANAGERUSER.getSignName(), port);
+    }
+
+    /**
+     * 得到企业用户主键
+     *
+     * @param port 端口号
+     * @return
+     */
+    public static String getCompanyUseKey(short port) {
+        return getMainKeyLen(MainKeySign.COMPANYUSER.getSignName(), port);
+    }
+
+    /**
+     * 得到司机用户主键
+     *
+     * @param port 端口号
+     * @return
+     */
+    public static String getDriverUseKey(short port) {
+        return getMainKeyLen(MainKeySign.DRIVERUSER.getSignName(), port);
+    }
+
+    /**
+     * 得到供应商用户主键
+     *
+     * @param port 端口号
+     * @return
+     */
+    public static String getSupplierUseKey(short port) {
+        return getMainKeyLen(MainKeySign.SUPPLIERUSER.getSignName(), port);
+    }
+
+    /**
      * 得到全权限主键
      *
      * @param port 端口号
