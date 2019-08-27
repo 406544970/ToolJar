@@ -8,7 +8,7 @@ import java.util.List;
 public class LhClass {
     /**
      * 得到长型主键
-     * 规则：标识 + 年月日时分秒 + 时间戳 + 端口号
+     * 规则：标识(2个字符) + 年月日时分秒 + 时间戳 + 端口号
      *
      * @param signName 主键标识
      * @param port     端口号
@@ -20,7 +20,7 @@ public class LhClass {
 
     /**
      * 得到短型主键
-     * 规则：标识 + 年月日 + 时间戳的后4位 + 端口号
+     * 规则：标识(1个字符) + 年月日 + 时间戳的后4位 + 端口号
      *
      * @param signName 主键标识
      * @param port     端口号
