@@ -1,6 +1,7 @@
 package lh.model;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 /**
  * @author 梁昊
@@ -9,15 +10,7 @@ import java.util.LinkedHashMap;
  * @editLog
  */
 public final class ResultVOPageTotal<T, V> extends ResultVOPage<T> {
-    private LinkedHashMap<String, V> totalData;
-
-    public LinkedHashMap<String, V> getTotalData() {
-        return totalData;
-    }
-
-    public void setTotalData(LinkedHashMap<String, V> totalData) {
-        this.totalData = totalData;
-    }
+    private List<V> totalData;
 
     @Override
     public int getPage() {
@@ -77,5 +70,13 @@ public final class ResultVOPageTotal<T, V> extends ResultVOPage<T> {
     @Override
     public void setCount(long count) {
         super.setCount(count);
+    }
+
+    public List<V> getTotalData() {
+        return totalData;
+    }
+
+    public void setTotalData(List<V> totalData) {
+        this.totalData = totalData;
     }
 }

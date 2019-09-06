@@ -8,6 +8,7 @@ import lh.model.ResultVOTotal;
 import lh.myenum.ResultCode;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 /**
  * @author 梁昊
@@ -18,7 +19,7 @@ import java.util.LinkedHashMap;
 public class ResultStruct {
     private static <T, S, V> S successPrivate(T data, Class<S> sClass
             , int page, int limit, long totalCount
-            , LinkedHashMap<String, V> linkedHashMap) {
+            , List<V> totalList) {
         String name = sClass.getName();
         S resultStruct;
         switch (name) {
@@ -45,7 +46,7 @@ public class ResultStruct {
                 ((ResultVOPageTotal) resultStruct).setPage(page);
                 ((ResultVOPageTotal) resultStruct).setLimit(limit);
                 ((ResultVOPageTotal) resultStruct).setCount(totalCount);
-                ((ResultVOPageTotal) resultStruct).setTotalData(linkedHashMap);
+                ((ResultVOPageTotal) resultStruct).setTotalData(totalList);
 
                 break;
             case "lh.model.ResultVOTotal":
@@ -53,7 +54,7 @@ public class ResultStruct {
                 ((ResultVOTotal) resultStruct).setCode(ResultCode.SUCCESS.getCode());
                 ((ResultVOTotal) resultStruct).setMsg(ResultCode.SUCCESS.getMessage());
                 ((ResultVOTotal) resultStruct).setData(data);
-                ((ResultVOTotal) resultStruct).setTotalData(linkedHashMap);
+                ((ResultVOTotal) resultStruct).setTotalData(totalList);
                 break;
             default:
                 resultStruct = (S) new ResultVO<T>();
@@ -94,33 +95,33 @@ public class ResultStruct {
     /**
      * 成功，带汇总功能
      *
-     * @param data          数据
-     * @param linkedHashMap 汇总数据LinkedHashMap
+     * @param data      数据
+     * @param totalList 汇总数据totalList
      * @param <T>
      * @param <V>
      * @return
      */
     public static <T, V> ResultVOTotal successTotal(T data
-            , LinkedHashMap<String, V> linkedHashMap) {
-        return successPrivate(data, ResultVOTotal.class, 1, 10, 0, linkedHashMap);
+            , List<V> totalList) {
+        return successPrivate(data, ResultVOTotal.class, 1, 10, 0, totalList);
     }
 
     /**
      * 成功，带汇总功能，带分页功能
      *
-     * @param data          数据
-     * @param page          当前页面数
-     * @param limit         每页条数
-     * @param totalCount    数据条数
-     * @param linkedHashMap 汇总数据LinkedHashMap
+     * @param data       数据
+     * @param page       当前页面数
+     * @param limit      每页条数
+     * @param totalCount 数据条数
+     * @param totalList  汇总数据totalList
      * @param <T>
      * @param <V>
      * @return
      */
     public static <T, V> ResultVOPageTotal successPageTotal(T data
             , int page, int limit, long totalCount
-            , LinkedHashMap<String, V> linkedHashMap) {
-        return successPrivate(data, ResultVOPageTotal.class, page, limit, totalCount, linkedHashMap);
+            , List<V> totalList) {
+        return successPrivate(data, ResultVOPageTotal.class, page, limit, totalCount, totalList);
     }
 
     /**
