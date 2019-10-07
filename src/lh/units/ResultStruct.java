@@ -7,7 +7,7 @@ import lh.model.ResultVOPageTotal;
 import lh.model.ResultVOTotal;
 import lh.myenum.ResultCode;
 
-import java.util.LinkedHashMap;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -132,9 +132,39 @@ public class ResultStruct {
      * @return
      */
     public static <S> S error(Class<S> sClass) {
-        return error(ResultCode.ERROR.getMessage(), sClass);
+        return error(ResultCode.ERROR.getMessage(), sClass, null);
     }
 
+    private static <T> Object getClassDefault(Class<T> tClass){
+        Object object = null;
+        if (tClass != null) {
+            String tName = tClass.getName();
+            switch (tName) {
+                case "java.util.Date":
+                    object = new Date();
+                    break;
+                case "java.lang.Boolean":
+                case "boolean":
+                    object = false;
+                    break;
+                case "int":
+                case "float":
+                case "byte":
+                case "short":
+                case "double":
+                case "java.lang.Integer":
+                case "java.lang.Float":
+                case "java.lang.Byte":
+                case "java.lang.Short":
+                case "java.lang.Double":
+                    object = 0;
+                    break;
+                default:
+                    break;
+            }
+        }
+        return object;
+    }
     /**
      * 失败
      *
@@ -143,7 +173,7 @@ public class ResultStruct {
      * @param <S>     泛型
      * @return
      */
-    public static <S> S error(String message, Class<S> sClass) {
+    public static <S, T> S error(String message, Class<S> sClass, Class<T> tClass) {
         String name = sClass.getClass().getName();
         S resultStruct;
         switch (name) {
@@ -153,6 +183,7 @@ public class ResultStruct {
                 if (message != null) {
                     ((ResultVO) resultStruct).setMsg(message);
                 }
+                ((ResultVO) resultStruct).setData(getClassDefault(tClass));
                 break;
             case "ResultVOPage":
                 resultStruct = (S) new ResultVOPage();
@@ -160,6 +191,7 @@ public class ResultStruct {
                 if (message != null) {
                     ((ResultVOPage) resultStruct).setMsg(message);
                 }
+                ((ResultVOPage) resultStruct).setData(getClassDefault(tClass));
                 break;
             case "ResultVOPageTotal":
                 resultStruct = (S) new ResultVOPageTotal();
@@ -167,6 +199,7 @@ public class ResultStruct {
                 if (message != null) {
                     ((ResultVOPageTotal) resultStruct).setMsg(message);
                 }
+                ((ResultVOPageTotal) resultStruct).setData(getClassDefault(tClass));
                 break;
             case "ResultVOTotal":
                 resultStruct = (S) new ResultVOTotal();
@@ -174,6 +207,7 @@ public class ResultStruct {
                 if (message != null) {
                     ((ResultVOTotal) resultStruct).setMsg(message);
                 }
+                ((ResultVOTotal) resultStruct).setData(getClassDefault(tClass));
                 break;
             default:
                 resultStruct = (S) new ResultVO();
@@ -181,6 +215,7 @@ public class ResultStruct {
                 if (message != null) {
                     ((ResultVO) resultStruct).setMsg(message);
                 }
+                ((ResultVO) resultStruct).setData(getClassDefault(tClass));
                 break;
         }
         return resultStruct;

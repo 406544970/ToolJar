@@ -3,6 +3,9 @@
     <output-path>$PROJECT_DIR$/out/artifacts/ToolJar_jar</output-path>
     <root id="archive" name="ToolJar.jar">
       <element id="module-output" name="ToolJar" />
+      <element id="directory" name="lib">
+        <element id="library" level="project" name="pinyin4j-2.5.0" />
+      </element>
     </root>
   </artifact>
 </component>
