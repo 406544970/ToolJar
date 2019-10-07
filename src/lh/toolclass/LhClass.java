@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 public class LhClass {
     /**
@@ -139,19 +140,27 @@ public class LhClass {
         if (signName != null && signName.length() != signLen) {
             return null;
         }
+        int max = 1000, min = 1;//1000以内
+        int i = (int) (Math.random() * (max - min) + min);
+        System.out.println(i);
+        if (i < 10) {
+            signName = String.format("%s00%d", signName, i);
+        } else if (i > 9 && i < 100) {
+            signName = String.format("%s0%d", signName, i);
+        } else {
+            signName = String.format("%s%d", signName, i);
+        }
         String myDate;
         String myTime = Long.valueOf(System.currentTimeMillis()).toString();
         SimpleDateFormat df;//设置日期格式
         if (lenType) {
-            df = new SimpleDateFormat("yyyyMMddHHmmss");
+            df = new SimpleDateFormat("yyyyMMddHHmmssSSS");
         } else {
-            df = new SimpleDateFormat("yyyyMMdd");
+            df = new SimpleDateFormat("yyyyMMddSSS");
             myTime = myTime.substring(myTime.length() - 1 - 4, myTime.length() - 1);
         }
         myDate = df.format(new Date());
-        if (!lenType) {
-            myDate = myDate.substring(2);
-        }
+        myDate = myDate.substring(2);
         return String.format("%s%s%s%d", signName, myDate, myTime, port);
     }
 

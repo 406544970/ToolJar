@@ -13,15 +13,15 @@ import java.util.regex.Pattern;
  * @author 梁昊
  * @date:2019/9/6
  */
-public class LhGetPinyYinClass {
+public class LhGetPinYinClass {
     /**
      * 将汉字转成拼音(取首字母)
      *
      * @param content 汉字内容
      * @return
      */
-    public static String getPingYin(String content) {
-        return getPingYin(content, false);
+    public static String getPinYin(String content) {
+        return getPinYin(content, false);
     }
 
     /***
@@ -30,7 +30,7 @@ public class LhGetPinyYinClass {
      * @param full 是否全拼
      * @return
      */
-    public static String getPingYin(String content, boolean full) {
+    public static String getPinYin(String content, boolean full) {
         /***
          * ^[\u2E80-\u9FFF]+$ 匹配所有东亚区的语言
          * ^[\u4E00-\u9FFF]+$ 匹配简体和繁体
